@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lise de catégorie(s)</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type='text/javascript' src="js/libs/jquery/jquery.js"></script>
+        <script type='text/javascript' src="js/libs/knockout/knockout-min.js"></script>
+        <script type='text/javascript' src='js/categorie.js'></script>  
+        <script type='text/javascript' src='js/webServ.js'></script> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+    <h2>Categories</h2>  
+        <div >  
+            <table  class="table table-striped">  
+                <tr>  
+                    <th>Id</th>  
+                    <th>Nom</th>  
+                    <th>Description</th> 
+                    <th>Action(s)</th>
+                </tr>  
+                <tbody data-bind="foreach: categories">  
+                    <tr>  
+                        <td>  
+                            <label data-bind='text: id' ></label>  
+                        </td>  
+                         <td>  
+                            <input data-bind='value: description, enable: (parseInt(id())%2 ===0)' />  
+                        </td>  
+                         <td >  
+                            <input data-bind='value: description, enable: (parseInt(id())%2 ===0)'  />  
+                        </td>  
+                        <td>
+                        <input type="button" value="Supprimer" /> 
+                        <input type="button" value="Màj" />
+                        </td>
+                    </tr>  
+                </tbody>  
+                
+            </table>  
+        </div>  
+        <div class="error"></div>
+       
+    </body>
+</html>
