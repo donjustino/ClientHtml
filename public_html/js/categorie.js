@@ -1,3 +1,4 @@
+var self = this;
 var Category = function (categorie) {
     this.id = ko.observable(categorie.id);
     this.nom = ko.observable(categorie.nom);
@@ -9,7 +10,7 @@ var Category = function (categorie) {
  Elle assure la communication entre la vue et le modèle, une sorte de pont quoi!  
  */
 var ViewModel = function (categories) {
-    var self = this;
+    
     //représente la liste des catégories  
     //La fonction prend la réponse obtenue du serveur en paramètre  
     //Ici nous supposons que vous avez chargé la liste des catégories  
@@ -19,10 +20,10 @@ var ViewModel = function (categories) {
     }));
 };
 
-self.remove = function (categorie) {
+self.removed = function (categorie) {
     self.categories.remove(categorie);
     $.ajax({
-        url: "http://localhost:8080/bibliotheque_ntdp/webresources/categorie",
+        url: "http://localhost:8080/bibliotheque_ntdp/webresources/categorie/" + categorie.id(),
         type: "DELETE",
         contentType: "application/json",
         headers: {
@@ -30,14 +31,55 @@ self.remove = function (categorie) {
         }
     })
             .success(function (data, status, jq) {
-                // alert(status);  
-                self.categories.remove(categorie);
+
+          
+            })
+            .error(function (jq, status, error) {
+             
+            });
+};
+
+
+self.added = function (categorie) {
+   var id = document.getElementById("id").value;
+    var description = document.getElementById("description").value;
+    var nom = document.getElementById("nom").value;
+    var JSONObject = {
+        "description": description,
+        "id": id,
+        "nom": nom
+    };
+    $.ajax({
+        url: "http://localhost:8080/bibliotheque_ntdp/webresources/categorie/",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(JSONObject),
+        dataType: 'JSON'
+    })
+            .success(function (data) {
+                self.categories.update(categorie);
+
+            })
+            .error(function (jq, status, error) {
+                $(".error").text(JSON.stringify(status + " " + error));
+            });
+            
+};
+self.updated = function (categorie) {
+    $.ajax({
+        url: "http://localhost:8080/bibliotheque_ntdp/webresources/categorie/" + categorie.id(),
+        type: "PUT",
+        contentType: "application/json",
+        data: JSON.stringify(ko.toJS(categorie), null, 2),
+        headers: {
+            Accept: "application/json"
+        }
+    })
+            .success(function (data, status, jq) {
+
             })
             .error(function (jq, status, error) {
                 $(".error").text(JSON.stringify(status + " " + error));
 
             });
-};
-self.update = function (categorie) {
-    //Effectuez votre requête AJAX ici  
 };

@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 var getData = function() {  
     $.ajax({  
-        url: "http://localhost:8080/bibliotheque_ntdp/webresources/categorie/",  
+        url: "http://localhost:8080/bibliotheque_ntdp/webresources/users",  
                 type: "GET",  
         headers: {  
             Accept: "application/json"  
@@ -13,7 +13,7 @@ var getData = function() {
    //Cette fonction indique à knockout d'appliquer les données aux éléments de la page   
     //Elle est toujours appelée quand les données sont pretes et est appelée qu'une fois   
     if(data.status)      
-     ko.applyBindings(new ViewModel(data.data));  
+     ko.applyBindings(new ViewModelUsers(data.data));  
     else{  
         alert(data.message)  
         }  

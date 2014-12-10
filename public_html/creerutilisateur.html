@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Liste des auteurs</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type='text/javascript' src="js/libs/jquery/jquery.js"></script>
+        <script type='text/javascript' src="js/libs/knockout/knockout-min.js"></script>
+        <script type='text/javascript' src='js/utilisateur.js'></script>  
+        <script type='text/javascript' src='js/webServUtilisateur.js'></script> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+       <div>
+        <ul class ="nav nav-tabs">
+            <li role="presentation"><a href="http://localhost:8383/ClientHTML5/client.html">Voir les Catégories</a></li>
+            <li role="presentation"><a href="http://localhost:8383/ClientHTML5/ajoutcategorie.html">Ajouter catégorie</a></li>
+            <li role="presentation"><a href="http://localhost:8383/ClientHTML5/livre.html">Voir les livres</a></li>
+            <li role="presentation"><a href="http://localhost:8383/ClientHTML5/creerlivre.html">Ajouter livre</a></li>
+            <li role="presentation"><a href="http://localhost:8383/ClientHTML5/auteur.html">Voir les auteurs</a></li>
+            <li role="presentation"><a href="http://localhost:8383/ClientHTML5/creerauteur.html">Ajouter un auteur</a></li>
+            <li role="presentation"><a href="http://localhost:8383/ClientHTML5/pret.html">Voir les prêts</a></li>
+            <li role="presentation"><a href="http://localhost:8383/ClientHTML5/creerpret.html">Ajouter prêt</a></li>
+            <li role="presentation"><a href="http://localhost:8383/ClientHTML5/utilisateur.html">Voir les utilisateurs</a></li>
+            <li role="presentation" class="active"><a href="http://localhost:8383/ClientHTML5/creerutilisateur.html">Ajout utilisateur</a></li>
+        </ul>
+        </div>
+        <form class="form-horizontal" >
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="id">ID :</label>
+                <div class="col-md-4">
+                    <input id="id" name="id" type="text" class="form-control input-sm">
+                </div>
+            </div>
+
+             <div class="form-group">
+                <label class="col-md-4 control-label" for="nomUtilisateur">Nom d'utilisateur :</label>
+                <div class="col-md-4">
+                    <input id="nomUtilisateur" name="nomUtilisateur" type="text" class="form-control input-sm">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="motDePasse">Mot de passe :</label>
+                <div class="col-md-4">
+                    <input id="motDePasse" name="motDePasse" type="text" class="form-control input-sm">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" ></label>
+                <div class="col-md-4">
+                    <center><button class="btn btn-success" data-bind="click: added"/>Ajouter</button></center>
+                    <span></span>
+                </div>
+            </div>
+        </form>
+
+    </body>
+</html>

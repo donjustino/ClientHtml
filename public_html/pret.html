@@ -1,67 +1,68 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Liste de catégorie</title>
+        <title>Liste des prets</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script type='text/javascript' src="js/libs/jquery/jquery.js"></script>
         <script type='text/javascript' src="js/libs/knockout/knockout-min.js"></script>
-        <script type='text/javascript' src='js/categorie.js'></script>  
-        <script type='text/javascript' src='js/webServ.js'></script> 
+        <script type='text/javascript' src='js/pret.js'></script>  
+        <script type='text/javascript' src='js/webServPret.js'></script> 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     </head>
     <body>
-        <div>
+         <div>
         <ul class ="nav nav-tabs">
-            <li role="presentation" class="active"><a href="http://localhost:8383/ClientHTML5/client.html">Voir les Catégories</a></li>
+            <li role="presentation"><a href="http://localhost:8383/ClientHTML5/client.html">Voir les Catégories</a></li>
             <li role="presentation"><a href="http://localhost:8383/ClientHTML5/ajoutcategorie.html">Ajouter catégorie</a></li>
             <li role="presentation"><a href="http://localhost:8383/ClientHTML5/livre.html">Voir les livres</a></li>
-            <li role="presentation"><a href="http://localhost:8383/ClientHTML5/creerlivre.html">Ajouter les livres</a></li>
+            <li role="presentation"><a href="http://localhost:8383/ClientHTML5/creerlivre.html">Ajouter livre</a></li>
             <li role="presentation"><a href="http://localhost:8383/ClientHTML5/auteur.html">Voir les auteurs</a></li>
             <li role="presentation"><a href="http://localhost:8383/ClientHTML5/creerauteur.html">Ajouter un auteur</a></li>
-            <li role="presentation"><a href="http://localhost:8383/ClientHTML5/pret.html">Voir les prêts</a></li>
+            <li role="presentation" class="active"><a href="http://localhost:8383/ClientHTML5/pret.html">Voir les prêts</a></li>
             <li role="presentation"><a href="http://localhost:8383/ClientHTML5/creerpret.html">Ajouter prêt</a></li>
             <li role="presentation"><a href="http://localhost:8383/ClientHTML5/utilisateur.html">Voir les utilisateurs</a></li>
             <li role="presentation"><a href="http://localhost:8383/ClientHTML5/creerutilisateur.html">Ajout utilisateur</a></li>
         </ul>
         </div>
-        
-
         <div >  
             <table  class="table table-striped">  
                 <tr>  
-                    <th>Id</th>  
-                    <th>Nom</th>  
-                    <th>Description</th> 
-                    <th>Action(s)</th>
+                    <th>Id</th> 
+                    <th>Livre</th>
+                    <th>Nom d'utilisateur</th>
+                    <th>Durée emprunts</th> 
+                    <th>Actions</th> 
                 </tr>  
-                <tbody data-bind="foreach: categories">  
+                <tbody data-bind="foreach: pret">  
                     <tr>  
                         <td>
                             <label class="col-md-4 control-label" data-bind='text: id' > </label>
                         </td>
+                        
                         <td>
-                            <input class="form-control input-sm" data-bind='value: nom' />
+                            <input class="form-control input-sm" data-bind='value: livre.titre' />
                         </td>
-                        <td >
-                            <input class="form-control input-sm" data-bind='value: description, enable: (parseInt(id())%2 ===0)' />  
+                        
+                        <td>
+                            <input class="form-control input-sm" data-bind='value: user.nomUtilisateur' />
                         </td>
+                      
+                        <td>
+                            <input class="form-control input-sm" data-bind='value: Duree' />
+                        </td>
+                        
+                       
+                      
+                  
                         <td>
                             <button class="btn btn-primary" data-bind="click: updated"/>Modifier</button>
                             <button class="btn btn-primary" data-bind="click: removed">Supprimer</button>  
-
-
-
-
                         </td>
                     </tr>  
                 </tbody>    
 
             </table>  
         </div>  
-        <div class="error"></div>
-
-       
-
     </body>
 </html>
